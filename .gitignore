@@ -130,3 +130,5 @@ lib-cov
 *.out
 *.pid
 
+server/filelog-info.log
+server/filelog-error.log
