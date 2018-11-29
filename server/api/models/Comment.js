@@ -22,15 +22,19 @@ module.exports = {
     //  ╔═╗╔═╗╔═╗╔═╗╔═╗╦╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
+      user: {
+          type: 'string',
+          required: true
+      },
+      message: {
+          type: 'string',
+          required: true
+      },
+      // Add a reference to User
+      postId: {
+          model: 'post'
+      }
 
   },
-    message: {
-        type: 'string',
-        required: true
-    },
-    // Add a reference to Post
-    postId: {
-        model: 'post'
-    }
 };
 

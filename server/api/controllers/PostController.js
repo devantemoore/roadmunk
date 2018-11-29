@@ -22,7 +22,7 @@ module.exports = {
     },
     getById: async function(req, res){
         try{
-            const post = await Post.findOne(req.params.id);
+            const post = await Post.findOne(req.params.id).populate('comments');
             if(post){
                 logger.info(`Get post by id: ${post.title}`);
                 return res.json(Utilities.processResponse(post));

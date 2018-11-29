@@ -22,6 +22,10 @@ module.exports = {
     //  ╔═╗╔═╗╔═╗╔═╗╔═╗╦╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
+      author: {
+          type: 'string',
+          required: true
+      },
       title: {
           type: 'string',
           required: true
@@ -29,7 +33,7 @@ module.exports = {
       description: { type: 'string', required: true },
       //Association to comments
       comments: {
-          model: 'comment',
+          collection: 'comment',
           via: 'postId'
       }
 
