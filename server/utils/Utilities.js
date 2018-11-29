@@ -8,5 +8,8 @@ module.exports = {
         }
 
     },
+    processResponse: function (data) {
+        return { data: data};
+    }
 
 };

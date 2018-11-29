@@ -54,17 +54,17 @@ module.exports.routes = {
   //  ╔╦╗╦╔═╗╔═╗
   //  ║║║║╚═╗║
   //  ╩ ╩╩╚═╝╚═╝
-  'GET /posts' : {
-      controller: 'PostController',
-      action: 'find'
-  },
-  'GET /posts/:id' : {
-      controller: 'PostController',
-      action: 'findOne'
-  },
   'POST /post' : {
       controller: 'PostController',
       action: 'create'
+  },
+  'POST /posts' : {
+      controller: 'PostController',
+      action: 'search'
+  },
+  'GET /posts/:id' : {
+      controller: 'PostController',
+      action: 'getById'
   },
   'PUT /posts/:id' : {
       controller: 'PostController',
