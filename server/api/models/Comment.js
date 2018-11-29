@@ -24,6 +24,13 @@ module.exports = {
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
 
   },
-
+    message: {
+        type: 'string',
+        required: true
+    },
+    // Add a reference to Post
+    postId: {
+        model: 'post'
+    }
 };
 

@@ -26,7 +26,12 @@ module.exports = {
           type: 'string',
           required: true
       },
-      description: { type: 'string', required: true }
+      description: { type: 'string', required: true },
+      //Association to comments
+      comments: {
+          model: 'comment',
+          via: 'postId'
+      }
 
   },
 

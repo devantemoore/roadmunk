@@ -69,6 +69,24 @@ module.exports.routes = {
   'PUT /posts/:id' : {
       controller: 'PostController',
       action: 'update'
-  }
-
+  },
+  /*
+  **Comment
+  * */
+    'POST /comment' : {
+        controller: 'CommentController',
+        action: 'create'
+    },
+    'POST /comments' : {
+        controller: 'CommentController',
+        action: 'search'
+    },
+    'GET /comments/:id' : {
+        controller: 'CommentController',
+        action: 'getById'
+    },
+    'PUT /comment/:id' : {
+        controller: 'CommentController',
+        action: 'update'
+    }
 };
