@@ -32,8 +32,9 @@ module.exports = {
                     id
                 })
                 .skip(offset)
-                .limit(size);
-            return res.json(Utilities.processResponse(comments));
+                .limit(size)
+                .sort('id DESC');
+            return res.json(Utilities.processResponse({comments, page, size}));
         } catch (err){
             const error = Utilities.processModelError(err);
             return res.badRequest({error});

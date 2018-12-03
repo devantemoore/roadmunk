@@ -30,7 +30,7 @@ class Posts extends Component {
 
         let payload = {
             page: (pageNumber) ? pageNumber : 1,
-            limit
+            size: limit
         };
         commonService.searchPosts(payload)
             .then(res => {

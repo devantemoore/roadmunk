@@ -49,9 +49,9 @@ body{
   background: #e0e0e0;
 }
 .layout-content{
-  /*background: #fff;*/
+  background: #fff;
   margin-top: 25px;
-  height: 100vh;
+  min-height: 100vh;
 }
 .card-footer-text{
   color: #5a5a5a;
