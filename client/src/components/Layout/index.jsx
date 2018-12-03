@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import {connect} from "react-redux";
 import { ProgressBar } from "../../utils/ProgressBar";
 import { alertConstants } from "../../_constants";
+import { commonActions } from "../../_actions";
 import { Header } from "./header";
 import Snackbar from "@material-ui/core/Snackbar";
+import {store} from "../../_store";
 
 class Layout extends Component {
     constructor(props) {
@@ -11,6 +13,12 @@ class Layout extends Component {
         this.state = {
             error: false,
             notificationIsVisible: false
+        }
+    }
+    componentDidMount(){
+        let { user } = store.getState();
+        if(!user){
+            this.authorizeUser();
         }
     }
     componentWillReceiveProps(nextProps){
@@ -29,6 +37,18 @@ class Layout extends Component {
             }
         }
     }
+    logoutUser = (e) => {
+        e.preventDefault();
+        const { dispatch } = this.props;
+        dispatch(commonActions.postSignOut());
+    };
+    authorizeUser = () => {
+       let user = window.prompt('What is your name?');
+        const { dispatch } = this.props;
+        user = (user) ? user : 'Anonymous';
+        dispatch(commonActions.postSignIn(user));
+    };
+
     clearAlertTimeout() {
         if (this.alertTimeout !== null) {
             clearTimeout(this.alertTimeout);
@@ -46,13 +66,15 @@ class Layout extends Component {
     }
 
     render() {
-        const { classes, children, requesting } = this.props;
+        const { classes, children, user, requesting } = this.props;
         const { error, notificationIsVisible} = this.state;
         return (
             <div>
                 <ProgressBar progress={requesting}/>
-                <Header/>
-
+                <Header user={user}
+                        onLogout={this.logoutUser}
+                        onLogin={this.authorizeUser}
+                />
                 <div className="container">
                     <div className="row">
                         <div className={`col m8 push-m2 s10 push-s1 layout-content ${classes}`}>

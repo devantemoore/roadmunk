@@ -11,9 +11,11 @@ const logger = new Logger('RM');
 module.exports = {
     create: async function(req, res){
         try{
-            const comment = await Comment.create(req.body).fetch();
+            let user = req.headers.authorization;
+            user = (user) ? user : 'Anonymous';
+            const comment = await Comment.create({user, ...req.body}).fetch();
             logger.info(`Comment created: ${comment.message}`);
-            return res.json(Utilities.processResponse(comment));
+            return res.json(Utilities.processResponse('gg'));
         }catch (err){
             const error = Utilities.processModelError(err);
             logger.error(`Error in creating comment: ${error}`);

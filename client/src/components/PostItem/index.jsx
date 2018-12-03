@@ -53,10 +53,11 @@ class Post extends Component {
         const { comment, post } = this.state;
         const { dispatch } = this.props;
 
-        if(!comment){
-            dispatch(alertActions.error('Please, provide your comment'));
+        if(!comment || comment.length < 5){
+            dispatch(alertActions.error('Please, provide your comment with a minimum of 5 characters'));
             return;
         }
+
         dispatch(alertActions.startRequest());
         let payload = {
             postId: post.id,

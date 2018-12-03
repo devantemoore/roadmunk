@@ -11,7 +11,9 @@ const logger = new Logger('RM');
 module.exports = {
     create: async function(req, res){
         try{
-           const post = await Post.create(req.body).fetch();
+            let author = req.headers.authorization;
+            author = (author) ? author : 'Anonymous';
+           const post = await Post.create({author, ...req.body}).fetch();
             logger.info(`Post created: ${post.title}`);
             return res.json(Utilities.processResponse(post));
         }catch (err){
