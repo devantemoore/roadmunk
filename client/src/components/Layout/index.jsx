@@ -65,8 +65,6 @@ class Layout extends Component {
                                             color="danger"
                                             message={error}
                                             open={notificationIsVisible}
-                                            closeNotification={() => this.setState({ notificationIsVisible: false })}
-                                            close
                                         />
                                     }
                                 </div>

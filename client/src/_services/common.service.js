@@ -41,8 +41,8 @@ function searchPosts(payload) {
             }
         );
 }
-function getPostById(payload) {
-    return appHelpers.postRequest(`${appConstants.API_BASE_URL }/api/User/Search`, payload)
+function getPostById(postId) {
+    return appHelpers.getRequest(`${appConstants.API_BASE_URL }/posts/${postId}`)
         .then(res => {
             return res;
         }).catch(

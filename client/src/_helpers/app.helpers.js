@@ -3,15 +3,12 @@ import { appConstants } from "../_constants";
 import axios from "axios";
 import { store } from '../_store'
 export const appHelpers = {
-    formatDate: d => {
-        return moment(d.split("T")[0]).format("MMM DD, YYYY");
-    },
-    formatDateSpecific: (d, format) => {
+    formatDate: (d, format) => {
         return moment(d).format(format || "MMM DD, YYYY");
     },
     getRequest: function (url, header) {
         const { user } = store.getState();
-        let combinedHeader = { "Content-Type": "application/json", AppName: appConstants.APP_ID };
+        let combinedHeader = { "Content-Type": "application/json" };
         if (user) {
             combinedHeader.Authorization = `${user}`;
         }
