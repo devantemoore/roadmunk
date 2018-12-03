@@ -7,6 +7,7 @@ import {appConstants} from "../../_constants";
 import {history, appHelpers } from "../../_helpers";
 import { InlinePageRequesting } from "../../utils/PageUtility";
 import CommentPanel from "./comment.new";
+import {store} from "../../_store";
 
 class Post extends Component {
     constructor(props) {
@@ -18,12 +19,15 @@ class Post extends Component {
             nextPage: null,
             endOfPage: false,
             limit: 10,
-            currentPage: 1
+            currentPage: 1,
+            user: ''
         }
     }
 
     componentDidMount(){
+        const { user } = store.getState();
         this.initializePage();
+        this.setState({user})
     }
 
     initializePage = () =>{
@@ -50,7 +54,7 @@ class Post extends Component {
     }
     handleSubmit = (e) =>{
         e.preventDefault();
-        const { comment, post } = this.state;
+        const { comment, post, user } = this.state;
         const { dispatch } = this.props;
 
         if(!comment || comment.length < 5){
@@ -62,7 +66,7 @@ class Post extends Component {
         let payload = {
             postId: post.id,
             message: comment,
-            user: 'Anonymous'
+            user: user.name
         };
         commonService.createComment(payload)
             .then(res => {
@@ -74,6 +78,7 @@ class Post extends Component {
                         comments: currComments,
                         comment: '',
                     });
+                    dispatch(alertActions.clear());
                 } else if (res.status === appConstants.ERROR_RESPONSE) {
                     dispatch(alertActions.error(res.response.error));
                 }
@@ -108,6 +113,7 @@ class Post extends Component {
                         comments : currComments,
                         endOfPage: (comments.length === 0)
                     });
+                    dispatch(alertActions.clear());
                 } else if (res.status === appConstants.ERROR_RESPONSE) {
                     dispatch(alertActions.error(res.response.error));
                 }

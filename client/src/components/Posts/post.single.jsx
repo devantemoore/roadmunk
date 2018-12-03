@@ -14,7 +14,11 @@ const SinglePost = ({ id, title, author, content}) => {
         </div>
         <div className="card-content">
             <p>
-                {content}
+                {content.substr(0, 100)}
+                {
+                    content.length > 100 &&
+                    <Link to={`/${id}`}> Read more</Link>
+                }
             </p>
         </div>
         <div className="card-action">

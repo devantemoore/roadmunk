@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {connect} from "react-redux";
 import { ProgressBar } from "../../utils/ProgressBar";
 import { alertConstants } from "../../_constants";
-import { commonActions } from "../../_actions";
+import { commonActions, alertActions } from "../../_actions";
 import { Header } from "./header";
 import Snackbar from "@material-ui/core/Snackbar";
 import {store} from "../../_store";
@@ -55,13 +55,15 @@ class Layout extends Component {
         }
     }
     showNotification() {
+        const { dispatch } = this.props;
         this.setState({notificationIsVisible: true});
         this.clearAlertTimeout();
         this.alertTimeout = setTimeout(
             function() {
+                dispatch(alertActions.clear());
                 this.setState({notificationIsVisible: false});
             }.bind(this),
-            10000
+            5000
         );
     }
 

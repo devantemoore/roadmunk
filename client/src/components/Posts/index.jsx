@@ -42,6 +42,7 @@ class Posts extends Component {
                        posts,
                        endOfPage: (posts.length === 0)
                    });
+                    dispatch(alertActions.clear());
                 } else if (res.status === appConstants.ERROR_RESPONSE) {
                     dispatch(alertActions.error(res.response.error));
                 }
