@@ -112,11 +112,10 @@ class Posts extends Component {
                 {
                     endOfPage &&
                     <div style={{marginBottom: '20px'}}>
-                        <div class="divider"></div>
+                        <div className="divider"> </div>
                         <p className={'center-align'}>That's all for now!</p>
                     </div>
                 }
-
             </Layout>
         );
     }

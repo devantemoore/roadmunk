@@ -31,3 +31,11 @@ body {
 .text-capitalize{
   text-transform: capitalize;
 }
+.float-button{
+  position: absolute;
+  bottom: 50px;
+  right: 25px;
+}
+.text-capitalize-first:first-letter{
+  text-transform: uppercase;
+}

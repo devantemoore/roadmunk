@@ -10,7 +10,7 @@ export const appHelpers = {
         const { user } = store.getState();
         let combinedHeader = { "Content-Type": "application/json" };
         if (user) {
-            combinedHeader.Authorization = `${user}`;
+            combinedHeader.Authorization = `${user.name}`;
         }
         let reqHeader = header
             ? header
@@ -51,7 +51,7 @@ export const appHelpers = {
         const { user } = store.getState();
         let combinedHeader = { "Content-Type": "application/json"};
         if (user) {
-            combinedHeader.Authorization = `${user}`;
+            combinedHeader.Authorization = `${user.name}`;
         }
         let reqHeader = header
             ? header

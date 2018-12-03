@@ -10,7 +10,7 @@ export const commonService = {
 
 };
 function createPost(payload) {
-    return appHelpers.postRequest(`${appConstants.API_BASE_URL }/api/User/Search`, payload)
+    return appHelpers.postRequest(`${appConstants.API_BASE_URL }/post`, payload)
         .then(res => {
             return res;
         }).catch(

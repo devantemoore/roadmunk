@@ -78,7 +78,6 @@ class Post extends Component {
                         comments: currComments,
                         comment: '',
                     });
-                    dispatch(alertActions.clear());
                 } else if (res.status === appConstants.ERROR_RESPONSE) {
                     dispatch(alertActions.error(res.response.error));
                 }
@@ -113,7 +112,6 @@ class Post extends Component {
                         comments : currComments,
                         endOfPage: (comments.length === 0)
                     });
-                    dispatch(alertActions.clear());
                 } else if (res.status === appConstants.ERROR_RESPONSE) {
                     dispatch(alertActions.error(res.response.error));
                 }
@@ -132,18 +130,18 @@ class Post extends Component {
                 {
                     (post) &&
                     <div>
-                        <h5>
+                        <h5 className={'text-capitalize'}>
                             {post.title}
                         </h5>
                         <p>
                             Created on {appHelpers.formatDate(post.createdAt)}
                         </p>
 
-                        <p>
+                        <p className={'text-capitalize-first'}>
                             {post.description}
                         </p>
 
-                        <div className="divider"></div>
+                        <div className="divider">&nbsp;</div>
                         <div>
                             <CommentPanel
                                 handleChange={this.handleChange}

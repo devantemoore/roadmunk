@@ -8,12 +8,12 @@ const SinglePost = ({ id, title, author, content}) => {
     <div className={"card hoverable medium"}>
         <div className={"card-image"}>
             <img src={PostImage} alt={title}/>
-                <Link to={`/${id}`} className={"card-title"}>
+                <Link to={`/${id}`} className={"card-title text-capitalize"}>
                     {title}
                 </Link>
         </div>
         <div className="card-content">
-            <p>
+            <p className={'text-capitalize-first'}>
                 {content.substr(0, 100)}
                 {
                     content.length > 100 &&
@@ -22,11 +22,8 @@ const SinglePost = ({ id, title, author, content}) => {
             </p>
         </div>
         <div className="card-action">
-            <div className="left card-footer-text">
-                3 comments
-            </div>
-            <div className="right card-footer-text">
-                {author}
+            <div className="card-footer-text blue-grey-text text-capitalize">
+                Author: {author}
             </div>
         </div>
     </div>
