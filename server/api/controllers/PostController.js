@@ -53,7 +53,7 @@ module.exports = {
                 })
                 .skip(offset)
                 .limit(size);
-            return res.json(Utilities.processResponse(posts));
+            return res.json(Utilities.processResponse({posts, page, size}));
         } catch (err){
             const error = Utilities.processModelError(err);
             return res.badRequest({error});

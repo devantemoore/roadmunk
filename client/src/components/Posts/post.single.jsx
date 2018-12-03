@@ -18,10 +18,10 @@ const SinglePost = ({ id, title, author, content}) => {
             </p>
         </div>
         <div className="card-action">
-            <div class="left card-footer-text">
+            <div className="left card-footer-text">
                 3 comments
             </div>
-            <div class="right card-footer-text">
+            <div className="right card-footer-text">
                 {author}
             </div>
         </div>

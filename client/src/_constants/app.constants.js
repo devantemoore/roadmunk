@@ -13,4 +13,8 @@ export const appConstants = {
 
     SIGN_IN_SUCCESS: 'POST_SIGN_IN_SUCCESS',
     SIGN_OUT: 'SIGN_OUT',
+
+    API_BASE_URL: 'http://localhost:1337',
+
+    DANGER_COLOR: '#f44336'
 };

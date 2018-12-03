@@ -63,3 +63,9 @@ body{
 .text-white{
   color:#ffffff;
 }
+.page-loader-wrapper{
+  position: absolute;
+  top: 40%;
+  left: 40%;
+  text-align: center;
+}
