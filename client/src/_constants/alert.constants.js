@@ -1,0 +1,9 @@
+export const alertConstants = {
+    SUCCESS: 'ALERT_SUCCESS',
+    ERROR: 'ALERT_ERROR',
+    NOTIFY: 'ALERT_NOTIFY',
+    CLEAR: 'ALERT_CLEAR',
+    START_REQUEST: 'START_REQUEST',
+    STOP_REQUEST: 'STOP_REQUEST',
+    RESET_APP: 'RESET_APP',
+};
