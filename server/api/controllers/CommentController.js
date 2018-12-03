@@ -38,33 +38,6 @@ module.exports = {
             const error = Utilities.processModelError(err);
             return res.badRequest({error});
         }
-    },
-    test: async function (req, res) {
-        try{
-            const user = await User.find({}).populate('pets');
-            return res.json(Utilities.processResponse(user));
-        } catch (err){
-            const error = Utilities.processModelError(err);
-            return res.badRequest({error});
-        }
-    },
-    test2: async function (req, res) {
-        try{
-            const user = await User.create(req.body).fetch();
-            return res.json(Utilities.processResponse(user));
-        } catch (err){
-            const error = Utilities.processModelError(err);
-            return res.badRequest({error});
-        }
-    },
-    test3: async function (req, res) {
-        try{
-            const user = await Pet.create(req.body).fetch();
-            return res.json(Utilities.processResponse(user));
-        } catch (err){
-            const error = Utilities.processModelError(err);
-            return res.badRequest({error});
-        }
     }
 
 };

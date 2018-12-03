@@ -23,7 +23,7 @@ module.exports = {
     getById: async function(req, res){
         try{
             const post = await Post.findOne(req.params.id).populate('comments', {
-                limit: 10,
+                limit: 3,
                 sort: 'id DESC',
             });
             if(post){

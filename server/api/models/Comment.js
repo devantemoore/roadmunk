@@ -28,7 +28,8 @@ module.exports = {
       },
       message: {
           type: 'string',
-          required: true
+          required: true,
+          minLength: 3
       },
       // Add a reference to User
       postId: {
