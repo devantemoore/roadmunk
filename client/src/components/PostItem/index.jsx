@@ -51,15 +51,33 @@ class Post extends Component {
     handleSubmit = (e) =>{
         e.preventDefault();
         const { comment, post } = this.state;
+        const { dispatch } = this.props;
+
+        if(!comment){
+            dispatch(alertActions.error('Please, provide your comment'));
+            return;
+        }
+        dispatch(alertActions.startRequest());
         let payload = {
             postId: post.id,
             message: comment,
             user: 'Anonymous'
-        }
-
-        console.log('comment', payload);
-        this.setState({comment: ''})
-
+        };
+        commonService.createComment(payload)
+            .then(res => {
+                if(res.status === appConstants.SUCCESS_RESPONSE){
+                    const comment = res.response.data;
+                    let currComments = this.state.comments;
+                    currComments.unshift(comment);
+                    this.setState({
+                        comments: currComments,
+                        comment: '',
+                    });
+                } else if (res.status === appConstants.ERROR_RESPONSE) {
+                    dispatch(alertActions.error(res.response.error));
+                }
+                dispatch(alertActions.stopRequest());
+            });
     }
     fetchMoreComments = (e) => {
         e.preventDefault();
@@ -68,7 +86,7 @@ class Post extends Component {
         let page = nextPage;
 
         if(!nextPage){
-            limit = 13;
+            limit = 10;
             page = 1
         }
         dispatch(alertActions.startRequest());
@@ -80,34 +98,26 @@ class Post extends Component {
         commonService.searchComments(payload)
             .then(res => {
                 if(res.status === appConstants.SUCCESS_RESPONSE){
-                    console.log(res.response);
                     const { comments, page } = res.response.data;
                     let currComments = this.state.comments;
-                    if(!nextPage){
-                        currComments = comments;
-                    }else{
-                        currComments.unshift(...comments)
-                    }
+                    currComments.push(...comments);
                     this.setState({
                         currentPage: page,
                         nextPage: (page + 1),
                         comments : currComments,
                         endOfPage: (comments.length === 0)
                     });
-                    console.log('len', comments.length);
-
                 } else if (res.status === appConstants.ERROR_RESPONSE) {
                     dispatch(alertActions.error(res.response.error));
                 }
                 dispatch(alertActions.stopRequest());
             });
-    }
-
+    };
     render() {
         const { post, comment, comments, endOfPage } = this.state;
         const { requesting } = this.props;
         return (
-            <Layout>
+            <Layout classes={'white'}>
                 {
                     (!post) && (requesting) &&
                     <InlinePageRequesting/>

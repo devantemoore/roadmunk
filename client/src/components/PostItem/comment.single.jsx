@@ -1,11 +1,9 @@
 import React  from 'react';
 import { appHelpers } from "../../_helpers";
-const colors = ['blue-grey', 'red', 'green', 'blue', ''];
 const SingleComment = ({ user, message, createdAt}) => {
-    const colorIndex =  Math.floor((Math.random() * 3));
     return(
        <li className="collection-item avatar">
-           <i className={`material-icons circle ${colors[colorIndex]}`}>person</i>
+           <i className={`material-icons circle red`}>person</i>
            <span className="title blue-grey-text">{user}</span>
            <p>
                {message}

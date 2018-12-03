@@ -99,7 +99,7 @@ class Posts extends Component {
                     })
                 }
                 {
-                    !endOfPage &&
+                    !endOfPage && !requesting &&
                     <div style={{marginBottom: '20px'}}>
                         <button className="waves-effect waves-light btn btn-small blue-grey darken-4"
                                 disabled={requesting}

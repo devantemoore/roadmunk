@@ -24,7 +24,7 @@ module.exports = {
         let { size, page, postId, id } = req.body;
         size = (size) ? size : 10;
         page = (page) ? page : 1;
-        const offset = size * (page - 1);
+        const offset = size * (page - 1) + 3; //Cater for the offset set in Post retrieve
         try{
             const comments = await Comment.find(
                 {

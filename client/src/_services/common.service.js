@@ -21,7 +21,7 @@ function createPost(payload) {
         );
 }
 function createComment(payload) {
-    return appHelpers.postRequest(`${appConstants.API_BASE_URL }/api/User/Search`, payload)
+    return appHelpers.postRequest(`${appConstants.API_BASE_URL }/comment`, payload)
         .then(res => {
             return res;
         }).catch(

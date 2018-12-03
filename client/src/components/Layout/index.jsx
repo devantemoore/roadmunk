@@ -46,7 +46,7 @@ class Layout extends Component {
     }
 
     render() {
-        const { children, requesting } = this.props;
+        const { classes, children, requesting } = this.props;
         const { error, notificationIsVisible} = this.state;
         return (
             <div>
@@ -55,7 +55,7 @@ class Layout extends Component {
 
                 <div className="container">
                     <div className="row">
-                        <div className="col m8 push-m2 s10 push-s1 layout-content">
+                        <div className={`col m8 push-m2 s10 push-s1 layout-content ${classes}`}>
                             {
                                 error &&
                                 <div className={'red p-4'}>
